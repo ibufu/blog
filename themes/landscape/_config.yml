@@ -5,7 +5,7 @@ menu:
 rss: /atom.xml
 
 # Content
-excerpt_link: Read More
+excerpt_link: Read More...
 fancybox: true
 
 # Sidebar
@@ -35,3 +35,4 @@ twitter:
 google_plus:
 fb_admins:
 fb_app_id:
+disqus_shortname: 'lingchenxuan'

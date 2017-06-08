@@ -86,3 +86,5 @@ neat_js:
   compress:
   exclude:
     - '*.min.js'
+
+disqus_shortname: 'lingchenxuan'
