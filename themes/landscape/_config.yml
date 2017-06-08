@@ -2,6 +2,8 @@
 menu:
   Home: /
   Archives: /archives
+  Links: /links
+  About: /about
 rss: /atom.xml
 
 # Content
@@ -25,7 +27,7 @@ index_widgets:
 
 # widget behavior
 archive_type: 'monthly'
-show_count: false
+show_count: true
 
 # Miscellaneous
 google_analytics:
