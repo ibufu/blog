@@ -29,6 +29,7 @@ show_count: false
 
 # Miscellaneous
 google_analytics:
+baidu_analytics: true
 favicon: /favicon.png
 twitter:
 google_plus:

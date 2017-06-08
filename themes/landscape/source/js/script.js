@@ -94,7 +94,7 @@
 
       if (alt) $(this).after('<span class="caption">' + alt + '</span>');
 
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" data-fancybox="gallery"></a>');
     });
 
     $(this).find('.fancybox').each(function(){
