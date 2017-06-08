@@ -56,7 +56,7 @@
 
           box.css({
               top: offset.top + 25,
-              left: offset.left - 25
+              left: offset.left - 50
           }).addClass('on');
       } else{
           var url = $this.attr('data-url'),
