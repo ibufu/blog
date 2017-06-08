@@ -30,7 +30,7 @@ show_count: false
 # Miscellaneous
 google_analytics:
 baidu_analytics: true
-favicon: /favicon.png
+favicon: /l.ico
 twitter:
 google_plus:
 fb_admins:
