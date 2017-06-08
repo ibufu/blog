@@ -30,7 +30,7 @@ archive_type: 'monthly'
 show_count: true
 
 # Miscellaneous
-google_analytics:
+google_analytics: UA-100724990-1
 baidu_analytics: true
 favicon: /l.ico
 twitter:
