@@ -3,8 +3,8 @@ search: 搜索
 tags: 标签
 tagcloud: 标签云
 tweets: 推文
-prev: 上一页
-next: 下一页
+prev: Prev
+next: Next
 comment: Comments
 archive_a: 归档
 archive_b: 归档：%s
