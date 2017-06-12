@@ -2,18 +2,18 @@
 title: 前端模块化实践----使用webpack打包js代码
 date: 2015-12-26 19:13
 tags: webpack
-category: 旧文重忆
+category: 开发日志
 ---
-最近在写一个后台管理页面，前端纯html来写，后台只负责提供接口。
-初期的计划是用angular来写，但后来需求要兼容IE6，加之时间有限，所以放弃了框架的使用。
-我用了commonJS来打包js模块，其他功能并没有使用。 <!--more-->
-### 第一步，安装webpack
+最近在写一个后台管理页面，前端纯 html 来写，后台只负责提供接口。
+初期的计划是用 angular 来写，但后来需求要兼容 IE6，加之时间有限，所以放弃了框架的使用。
+我用了 commonJS 来打包 js 模块，其他功能并没有使用。 <!--more-->
+### 第一步，安装 webpack
 ```bash
 npm install webpack -g
 npm install webpack --save-dev
 ```
-### 第二步，修改webpack.config.js
-这是我现在项目里用的config.js
+### 第二步，修改 webpack.config.js
+这是我现在项目里用的 config.js
 ```js
 var webpack = require("webpack");
 var path = require("path");
@@ -55,7 +55,7 @@ module.exports = {
 }
 ```
 
-模块文件的写法，我用的commonJS
+模块文件的写法，我用的 commonJS
 
 先写一个对象
 ```js
