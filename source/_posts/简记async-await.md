@@ -2,7 +2,7 @@
 title: 简记async await
 date: 2016-08-31 10:42
 tags:
-- javascript
+- JavaScript
 - async
 - await
 category: 知识碎片
@@ -14,7 +14,7 @@ category: 知识碎片
 当函数执行到 **await** 时，函数会暂停，保存上下文环境，等待执行结果。<!--more-->
 ### 例子1：
 
-``` javascript
+``` JavaScript
 function timeout(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);
@@ -31,7 +31,7 @@ asyncPrint('hello world', 50);
 ```
 ### 例子2：
 
-``` javascript
+``` JavaScript
 (async function() {
     const result = await callApi('/directNet/getCampInfo', { campId });
         console.log(result);
@@ -42,7 +42,7 @@ asyncPrint('hello world', 50);
 要在for循环中使用，不能使用forEach。
 ### 异常:
 
-``` javascript
+``` JavaScript
 try {
      await foo();
 } catch (e) {

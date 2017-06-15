@@ -1,6 +1,7 @@
 ---
 title: 容易记混的splice和slice
 date: 2016-11-16
+tag: JavaScript
 category: 知识碎片
 ---
 
@@ -58,7 +59,7 @@ console.log(sliced);
 ```
 
 #### 语法
-``` javascript
+``` JavaScript
 arr.slice([begin[,end]])
 ```
 
