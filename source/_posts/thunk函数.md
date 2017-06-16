@@ -45,6 +45,8 @@ readFileThunk(fileA)(callback);
 
 > A thunk is a function that wraps an expression to delay its evaluation.
 
+thunk 函数封装了一个表达式，使它可以延迟执行。
+
 ```js
 // calculation of 1 + 2 is immediate
 // x === 3

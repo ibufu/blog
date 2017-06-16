@@ -5,7 +5,7 @@ tag: JavaScript
 category: 知识碎片
 ---
 
-### Array.prototype.splice
+## Array.prototype.splice
 
 splice(拼接) 方法用新元素替换旧元素，以此修改数组的内容。 <!--more-->
 
@@ -22,11 +22,11 @@ myFish.splice(2, 1, "splice", "parrot");
 // myFish is ["angel", "clown", "splice", "parrot", "sturgeon"]
 ```
 
-#### 语法
+### 语法
 ``` js
 array.splice(start, deleteCount[, item1[, item2[, ...]]])
 ```
-#### 参数
+### 参数
 
 ** start **​
 从数组的哪一位开始修改内容。如果超出了数组的长度，则从数组末尾开始添加内容；如果是负值，则表示从数组末位开始的第几位。
@@ -46,7 +46,7 @@ array.splice(start, deleteCount[, item1[, item2[, ...]]])
 ** 提示 **
 请注意，`splice` 方法与 `slice` 方法的作用是不同的，`splice` 方法会直接对数组进行修改。
 
-### Array.prototype.slice
+## Array.prototype.slice
 slice(切片) 方法会浅复制（shallow copy）数组的一部分到一个新的数组，并返回这个新数组。
 
 ``` js
@@ -58,12 +58,12 @@ console.log(sliced);
 // ['one', 'two']
 ```
 
-#### 语法
+### 语法
 ``` JavaScript
 arr.slice([begin[,end]])
 ```
 
-#### 参数
+### 参数
 
 ** begin **
 从该索引处开始提取原数组中的元素（从0开始）。
