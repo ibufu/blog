@@ -1,7 +1,7 @@
 ---
 title: doctype 对 line-height 的影响
 date: 2016-10-08 14:23
-tags: css
+tags: CSS
 category: 开发日志
 ---
 前几天写页面的时候，碰到了一个问题，使用 ```line-height``` 来使一张图片垂直居中，可是并没有成功。折腾了半天，发现问题出在忘记在页面上设置 ```doctype```。
