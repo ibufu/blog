@@ -39,4 +39,4 @@ fb_admins:
 fb_app_id:
 disqus_shortname: 'lingchenxuan'
 
-baidushare: true
+baidushare: false
