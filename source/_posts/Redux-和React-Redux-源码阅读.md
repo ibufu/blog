@@ -454,4 +454,4 @@ f1(f2(f3(f)))()
  */
 ```
 
-(在线例子)[https://jsfiddle.net/7rsbvsmr/]
+[在线例子](https://jsfiddle.net/7rsbvsmr/)
