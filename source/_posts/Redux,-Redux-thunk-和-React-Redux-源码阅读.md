@@ -1,5 +1,5 @@
 ---
-title: Redux, Redux-thunk 和 React-Redux 源码阅读
+title: Redux, Redux thunk 和 React Redux 源码阅读
 date: 2017-07-04 18:53:53
 tags: 
  - React
