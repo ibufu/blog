@@ -310,7 +310,8 @@ export default function applyMiddleware(...middlewares) {
     // 中间件链
     let chain = []
 
-    // 把 getState 和 dispatch 包在外面
+    // 把 getState 和 dispatch 包在外面， 
+    // 注意这个 dispatch 将会变成组合后的 
     const middlewareAPI = {
       getState: store.getState,
       dispatch: (action) => dispatch(action)
@@ -404,15 +405,15 @@ function middleware3(store) {
 `M1(M2(M3(dispatch)))`
 粗粗一看，一定是以为M3会先执行。
 
-这样顺序不就不对了吗？其实，确实是 M3 先执行，但是 M3 只是 return 了一个 function ，并没有执行里面的逻辑。
+这样顺序不就不对了吗？其实，确实是 M3 先执行，但是 M3 只是 return 了一个 **function** ，并**没有执行**里面的逻辑。
 
 所以最终是 M1 得到了 M2 , M3 和 dispatch 的逻辑封装，先执行 M1 的逻辑，打印。
 执行到中间，碰到了 next，这个 next 就是我上面说的那一大串逻辑封装函数。
 以此类推，M2 和 M3 在 next 之前的代码都会依次执行。
 M3 的 next 是真正的 dispatch 了，没有其它中间件。
-于是，接着会依次执行 M3 余下的逻辑， M2 余下的逻辑， M1余下的逻辑，跳出整个函数。
+于是，接着会依次执行 M3 余下的逻辑， M2 余下的逻辑， M1余下的逻辑，直至跳出整个函数。
 
-这就是洋葱模型，几个同心圆代表各个中间件，一条直线从圆心穿过，有始有终，放得初心。
+这就是**洋葱模型**，几个同心圆代表各个中间件，一条直线从圆心穿过，有始有终，放得初心。
 
 一个简化的洋葱模型，只要搞懂了这个，Redux 的中间件的基本原理就算整明白了，嘿嘿。
 ```js
@@ -455,3 +456,62 @@ f1(f2(f3(f)))()
 ```
 
 [在线例子](https://jsfiddle.net/7rsbvsmr/)
+
+## Redux Thunk
+
+### 简介
+
+首先港一下，Redux 里面是可以**异步**调用 `dispatch()` 的，比如：
+
+```js
+setTimeout(function() {
+  dispatch({ type: 'MIDDLEWARE_TEST' })
+}, 500)
+```
+
+恩，没毛病。但是这样有许多不便之处，可以看看这个[回答](https://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559)，了解有什么不便之处，主要是手动传递 `dispatch` 和难以分辨普通的 `actionCreator`。
+
+> This was the motivation for finding a way to “legitimize” this pattern of providing dispatch to a helper function, and help Redux “see” such asynchronous action creators as a special case of normal action creators rather than totally different functions.
+
+所以就诞生了 Redux Thunk。
+
+Redux Thunk 可以让 action 作为一个**函数**，并传递`dispatch`和`getState`作为参数。
+
+### 源码
+```js
+/**
+* 吐槽一下 redux 和 redux-thunk都出自 Dan Abramov 之手，
+* 但是一个句尾分号一个没有，真是奇怪。
+* 
+* 源码非常的精短，一眼就能看出来是干嘛的。
+* 如果 action 是一个函数，就执行该 action，
+* 并将 dispatch， getState作为参数传入。
+* 且将不会执行 next()。
+* 若是普通的 action，则啥也不干，直接 next()。
+*/
+function createThunkMiddleware(extraArgument) {
+  return ({ dispatch, getState }) => next => action => {
+    if (typeof action === 'function') {
+      // 这里的 dispatch 是组合后的，可以看上文 applyMiddleware() 的代码，
+      // 所以在此处调用也会进入中间件链
+      return action(dispatch, getState, extraArgument);
+    }
+
+    return next(action);
+  };
+}
+
+const thunk = createThunkMiddleware();
+```
+### 啥是 thunk
+
+作者是这样描述的：
+
+> A thunk is a function that wraps an expression to delay its evaluation.
+
+thunk 首先它是一个**函数**，然后这个函数里面封装了一个要**延迟执行**的表达式。
+
+[拓展阅读](/2016/11/29/thunk函数/)
+
+## React Redux
+
