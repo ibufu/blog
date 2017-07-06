@@ -562,7 +562,10 @@ class Connect extends Component {
     this.propsMode = Boolean(props[storeKey])
     this.setWrappedInstance = this.setWrappedInstance.bind(this)
 
+    // 初始化Selector
     this.initSelector()
+    
+    // 初始化Subscription
     this.initSubscription()
   }
 
@@ -574,6 +577,7 @@ class Connect extends Component {
   componentDidMount() {
     if (!shouldHandleStateChanges) return
 
+    // 和store建立订阅关系
     this.subscription.trySubscribe()
     this.selector.run(this.props)
     if (this.selector.shouldComponentUpdate) this.forceUpdate()
@@ -607,6 +611,7 @@ class Connect extends Component {
   initSelector() {
     const sourceSelector = selectorFactory(this.store.dispatch, selectorFactoryOptions)
     this.selector = makeSelectorStateful(sourceSelector, this.store)
+    // 跑props，map数据
     this.selector.run(this.props)
   }
 
@@ -620,12 +625,14 @@ class Connect extends Component {
   }
 
   onStateChange() {
+    // 在state更新时，重新跑props
     this.selector.run(this.props)
 
     if (!this.selector.shouldComponentUpdate) {
       this.notifyNestedSubs()
     } else {
       this.componentDidUpdate = this.notifyNestedSubsOnComponentDidUpdate
+      // 调用setState，另组件更新
       this.setState(dummyState)
     }
   }
